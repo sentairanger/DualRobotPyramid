@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: django-dualrobot
+  name: pyramid-dualrobot
   namespace: argocd
 spec:
   destination:
