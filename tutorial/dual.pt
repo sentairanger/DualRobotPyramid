@@ -1,0 +1,219 @@
+<html>
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style>
+		body {
+		   background-color: aqua;
+
+
+		}
+	.grid-button {
+		display:grid;
+		grid-template-columns: auto auto auto auto auto auto;
+
+
+	}
+	.grid-button button {
+		padding: 10px 24px;
+		color: white;
+
+	}
+	.linus {
+		background-color: green;
+
+	}
+
+	.torvalds {
+		background-color: red;
+	}
+	.servo-one button{
+		background-color: blue;
+		padding: 10px 24px;
+		color: white;
+
+	}
+	.servo-two button {
+		background-color:magenta;
+		padding: 10px 24px;
+		color: white;
+	}
+	.pwm-one button{
+		background-color: orange;
+		padding: 10px 24px;
+		color: white;
+
+	}
+	.pwm-two button {
+		background-color: purple;
+		padding: 10px 24px;
+		color: white;
+	}
+</style>
+</head>
+<body>
+	<h1>Dual Robot Control</h1>
+<h2> Dual Robot Dpads</h2>
+
+<div class="grid-button">
+<button> None</button>
+<button class="linus" id="up"> ^</button>
+<button> None</button>
+<button>None</button>
+<button class="torvalds" id="forward">^</button>
+<button>None</button>
+<button class="linus" id="west"><</button>
+<button class="linus" id="linus"> Blink</button>
+<button class="linus" id="east"> > </button>
+<button class="torvalds" id="left"> < </button>
+<button class="torvalds" id="torvalds"> Blink</button>
+<button class="torvalds" id="right">></button>
+<button>None</button>
+<button class="linus" id="down">v</button>
+<button>None</button>
+<button>None</button>
+<button class="torvalds" id="backward">v</button>
+<button>None</button>
+</div>
+
+<h2>Servo One</h2>
+<div class="servo-one">
+<button id="min">min</button>
+<button id="mid">mid</button>
+<button id="max">max</button>
+</div>
+
+<h2>Servo Two </h2>
+<div class="servo-two">
+<button id="min2">min</button>
+<button id="mid2">mid</button>
+<button id="max2">max</button>
+</div>
+
+<h2>PWM One</h2>
+<div class="pwm-one">
+<button id="thirty">30%</button>
+<button id="fifty">50%</button>
+<button id="full">100%</button>
+</div>
+
+<h2>PWM Two</h2>
+<div class="pwm-two">
+<button id="thirty2">30%</button>
+<button id="fifty-2">50%</button>
+<button id="full-2">100%</button>
+
+</div>
+<script>
+$('#forward').on('mousedown', function(){
+	$.get('/forward');
+	});
+$('#forward').on('mouseup', function(){
+	$.get('/stop');
+	});
+$('#backward').on('mousedown', function(){
+	$.get('/backward');
+	});
+$('#backward').on('mouseup', function(){
+	$.get('/stop');
+	});
+$('#left').on('mousedown', function(){
+	$.get('/left');
+	});
+$('#left').on('mouseup', function(){
+	$.get('/stop');
+	});
+$('#right').on('mousedown', function(){
+	$.get('/right');
+	});
+$('#right').on('mouseup', function(){
+	$.get('/stop');
+	});
+$('#torvalds').on('mousedown', function(){
+	$.get('/torvaldson');
+	});
+$('#torvalds').on('mouseup', function(){
+	$.get('/torvaldsoff');
+	});
+
+
+$('#linus').on('mousedown', function(){
+	$.get('/eyeon');
+	});
+$('#linus').on('mouseup', function(){
+	$.get('/eyeoff');
+	});
+$('#up').on('mousedown', function(){
+	$.get('/directionone');
+	});
+$('#up').on('mouseup', function(){
+	$.get('/stoptwo');
+	});
+$('#down').on('mousedown', function(){
+	$.get('/directiontwo');
+	});
+$('#down').on('mouseup', function(){
+	$.get('/stoptwo');
+	});
+$('#west').on('mousedown', function(){
+	$.get('/directionfour');
+	});
+$('#west').on('mouseup', function(){
+	$.get('/stoptwo');
+	});
+$('#east').on('mousedown', function(){
+	$.get('/directionthree');
+	});
+$('#east').on('mouseup', function(){
+	$.get('/stoptwo');
+    });
+
+$('#min').on('mousedown', function(){
+	$.get('/min');
+	});
+$('#mid').on('mousedown', function(){
+	$.get('/mid');
+	});
+$('#max').on('mousedown', function(){
+	$.get('/max');
+	});
+
+$('#min2').on('mousedown', function(){
+	$.get('/min2');
+	});
+$('#mid2').on('mousedown', function(){
+	$.get('/mid2');
+	});
+$('#max2').on('mousedown', function(){
+	$.get('/max2');
+	});
+
+$('#thirty').on('mousedown', function(){
+	$.get('/thirty');
+	});
+$('#fifty').on('mousedown', function(){
+	$.get('/fifty');
+	});
+$('#full').on('mousedown', function(){
+	$.get('/full');
+	});
+// PWM two
+$('#thirty-2').on('mousedown', function(){
+	$.get('/thirty2');
+	});
+$('#fifty-2').on('mousedown', function(){
+	$.get('/fifty2');
+	});
+$('#full-2').on('mousedown', function(){
+	$.get('/full2');
+	});
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
