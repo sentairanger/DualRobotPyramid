@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pyramid-dualrobot
+  name: pyramid-dualrobot
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: pyramid-dualrobot
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: pyramid-dualrobot
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: IfNotPresent 
+        name: pyramid-dualrobot
