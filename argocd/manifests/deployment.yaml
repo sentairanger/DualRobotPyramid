@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pyramid-dualrobot
+  name: pyramid-dualrobot
+  namespace: default 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pyramid-dualrobot
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: pyramid-dualrobot
+    spec:
+      containers:
+      - image: linuxrobotgeek/pyramid-dualrobot:v1.0.0
+        imagePullPolicy: IfNotPresent
+        name: pyramid-dualrobot
+        resources:
+          requests:
+            cpu: 50m
+            memory: 256Mi
